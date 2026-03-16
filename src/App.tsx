@@ -67,6 +67,29 @@ export default function App() {
     { name: '影音專區', id: 'videos' },
   ];
 
+  const features = [
+    {
+      icon: <BookOpen className="text-blue-500" size={32} />,
+      title: "智慧觀光與科技應用",
+      desc: "涵蓋人工智慧概論、程式設計、旅遊電子商務與數據應用，結合數位科技培養創新觀光人才。"
+    },
+    {
+      icon: <Plane className="text-red-500" size={32} />,
+      title: "航空與旅行業經營",
+      desc: "學習航空客運票務、空地勤服務管理、旅行業經營與訂位系統，掌握旅遊產業核心實務。"
+    },
+    {
+      icon: <Calendar className="text-yellow-500" size={32} />,
+      title: "會展與節慶活動策劃",
+      desc: "深入會議與展覽管理、節慶活動規劃設計、觀光整合行銷傳播，具備大型活動策展能力。"
+    },
+    {
+      icon: <Globe className="text-emerald-500" size={32} />,
+      title: "永續觀光與全球實習",
+      desc: "接軌國際趨勢，學習ESG觀光企業永續經營，並提供海內外企業實習與職場實務專題。"
+    }
+  ];
+
   return (
     <div className="min-h-screen font-sans text-slate-800 bg-slate-50 selection:bg-red-200 selection:text-red-900">
       {/* Navigation */}
@@ -98,9 +121,14 @@ export default function App() {
                   {link.name}
                 </button>
               ))}
-              <button className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full font-medium text-sm transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              <a 
+                href="https://iee.mcu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full font-medium text-sm transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
                 立即報名
-              </button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -131,9 +159,14 @@ export default function App() {
                 {link.name}
               </button>
             ))}
-            <button className="bg-red-600 text-white px-5 py-3 rounded-xl font-medium text-center shadow-md">
+            <a 
+              href="https://iee.mcu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-red-600 text-white px-5 py-3 rounded-xl font-medium text-center shadow-md"
+            >
               立即報名
-            </button>
+            </a>
           </motion.div>
         )}
       </nav>
@@ -327,37 +360,18 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <BookOpen className="text-blue-500" size={32} />,
-                title: "智慧觀光與科技應用",
-                desc: "涵蓋人工智慧概論、程式設計、旅遊電子商務與數據應用，結合數位科技培養創新觀光人才。"
-              },
-              {
-                icon: <Plane className="text-red-500" size={32} />,
-                title: "航空與旅行業經營",
-                desc: "學習航空客運票務、空地勤服務管理、旅行業經營與訂位系統，掌握旅遊產業核心實務。"
-              },
-              {
-                icon: <Calendar className="text-yellow-500" size={32} />,
-                title: "會展與節慶活動策劃",
-                desc: "深入會議與展覽管理、節慶活動規劃設計、觀光整合行銷傳播，具備大型活動策展能力。"
-              },
-              {
-                icon: <Globe className="text-emerald-500" size={32} />,
-                title: "永續觀光與全球實習",
-                desc: "接軌國際趨勢，學習ESG觀光企業永續經營，並提供海內外企業實習與職場實務專題。"
-              }
-            ].map((feature, idx) => (
-              <FadeIn key={idx} delay={idx * 0.1} direction="up">
-                <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-slate-100 h-full">
-                  <div className="w-14 h-14 rounded-xl bg-slate-50 flex items-center justify-center mb-6">
-                    {feature.icon}
+            {features.map((feature, idx) => (
+              <div key={idx}>
+                <FadeIn delay={idx * 0.1} direction="up">
+                  <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-slate-100 h-full">
+                    <div className="w-14 h-14 rounded-xl bg-slate-50 flex items-center justify-center mb-6">
+                      {feature.icon}
+                    </div>
+                    <h4 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h4>
+                    <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
                   </div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h4>
-                  <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
-                </div>
-              </FadeIn>
+                </FadeIn>
+              </div>
             ))}
           </div>
         </div>
