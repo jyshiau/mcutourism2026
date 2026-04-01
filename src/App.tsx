@@ -5,7 +5,6 @@ import {
   Globe, 
   Plane, 
   BookOpen, 
-  Users, 
   Calendar, 
   CheckCircle, 
   PlayCircle, 
@@ -13,13 +12,16 @@ import {
   Phone, 
   Mail, 
   ChevronRight,
+  ArrowRight,
   Menu,
   X,
   Award,
-  Briefcase
+  Briefcase,
+  ChevronDown
 } from 'lucide-react';
+import { translations, Language } from './translations';
 
-const FadeIn = ({ children, delay = 0, direction = 'up' }: { children: React.ReactNode, delay?: number, direction?: 'up' | 'down' | 'left' | 'right' }) => {
+const FadeIn = ({ children, delay = 0, direction = 'up', className = '' }: { children: React.ReactNode, delay?: number, direction?: 'up' | 'down' | 'left' | 'right', className?: string }) => {
   const directions = {
     up: { y: 40, x: 0 },
     down: { y: -40, x: 0 },
@@ -29,6 +31,7 @@ const FadeIn = ({ children, delay = 0, direction = 'up' }: { children: React.Rea
 
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, ...directions[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -42,6 +45,9 @@ const FadeIn = ({ children, delay = 0, direction = 'up' }: { children: React.Rea
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lang, setLang] = useState<Language>('zh-TW');
+
+  const t = translations[lang];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,33 +66,33 @@ export default function App() {
   };
 
   const navLinks = [
-    { name: '關於專班', id: 'about' },
-    { name: '修讀流程', id: 'pathway' },
-    { name: '課程特色', id: 'features' },
-    { name: '招生與申請', id: 'admission' },
-    { name: '影音專區', id: 'videos' },
+    { name: t.nav.about, id: 'about' },
+    { name: t.nav.pathway, id: 'pathway' },
+    { name: t.nav.features, id: 'features' },
+    { name: t.nav.admission, id: 'admission' },
+    { name: t.nav.videos, id: 'videos' },
   ];
 
   const features = [
     {
       icon: <BookOpen className="text-blue-500" size={32} />,
-      title: "智慧觀光與科技應用",
-      desc: "涵蓋人工智慧概論、程式設計、旅遊電子商務與數據應用，結合數位科技培養創新觀光人才。"
+      title: t.features.f1Title,
+      desc: t.features.f1Desc
     },
     {
       icon: <Plane className="text-red-500" size={32} />,
-      title: "航空與旅行業經營",
-      desc: "學習航空客運票務、空地勤服務管理、旅行業經營與訂位系統，掌握旅遊產業核心實務。"
+      title: t.features.f2Title,
+      desc: t.features.f2Desc
     },
     {
       icon: <Calendar className="text-yellow-500" size={32} />,
-      title: "會展與節慶活動策劃",
-      desc: "深入會議與展覽管理、節慶活動規劃設計、觀光整合行銷傳播，具備大型活動策展能力。"
+      title: t.features.f3Title,
+      desc: t.features.f3Desc
     },
     {
       icon: <Globe className="text-emerald-500" size={32} />,
-      title: "永續觀光與全球實習",
-      desc: "接軌國際趨勢，學習ESG觀光企業永續經營，並提供海內外企業實習與職場實務專題。"
+      title: t.features.f4Title,
+      desc: t.features.f4Desc
     }
   ];
 
@@ -96,38 +102,58 @@ export default function App() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className={`flex items-center cursor-pointer ${lang === 'vi' ? 'gap-1.5 lg:gap-2' : 'gap-3'}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <img 
                 src="https://tourismdp.mcu.edu.tw/wp-content/uploads/sites/17/2023/02/LOGO-Banner-removebg-preview-1.png" 
                 alt="銘傳大學觀光事業學系 Logo" 
-                className="h-14 md:h-16 w-auto object-contain drop-shadow-md"
+                className="h-[61px] md:h-[69px] w-auto object-contain drop-shadow-md shrink-0"
                 referrerPolicy="no-referrer"
               />
               <div className="flex flex-col justify-center mt-1">
-                <span className="font-bold text-sm md:text-base tracking-wide text-slate-800">
-                  國際專修部(越南專班)
+                <span className={`font-bold text-slate-800 whitespace-nowrap ${
+                  lang === 'vi' ? 'text-[10px] lg:text-[11px] xl:text-[15px] tracking-normal' : 'text-[14px] lg:text-[16px] xl:text-[18px] tracking-wide'
+                }`}>
+                  {t.nav.program}
                 </span>
               </div>
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className={`hidden md:flex items-center ${lang === 'vi' ? 'space-x-1.5 lg:space-x-3 xl:space-x-6' : 'space-x-4 lg:space-x-6 xl:space-x-8'}`}>
               {navLinks.map((link) => (
                 <button 
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="font-medium text-sm text-slate-700 hover:text-red-600 transition-colors"
+                  className={`font-medium text-slate-700 hover:text-red-600 transition-colors whitespace-nowrap ${
+                    lang === 'vi' ? 'text-[10px] lg:text-[11px] xl:text-[14px]' : 'text-[14px] lg:text-[15px] xl:text-[16px]'
+                  }`}
                 >
                   {link.name}
                 </button>
               ))}
+              <div className="relative group">
+                <button className={`flex items-center gap-1 text-slate-700 hover:text-red-600 font-medium whitespace-nowrap ${
+                  lang === 'vi' ? 'text-[10px] lg:text-[11px] xl:text-[14px]' : 'text-[14px] lg:text-[15px] xl:text-[16px]'
+                }`}>
+                  <Globe size={lang === 'vi' ? 14 : 18} />
+                  {lang === 'zh-TW' ? '繁體中文' : lang === 'zh-CN' ? '简体中文' : 'Tiếng Việt'}
+                  <ChevronDown size={lang === 'vi' ? 14 : 16} />
+                </button>
+                <div className="absolute right-0 mt-2 w-36 bg-white rounded-xl shadow-lg border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <button onClick={() => setLang('zh-TW')} className="block w-full text-left px-4 py-2 text-[15px] text-slate-700 hover:bg-slate-50 hover:text-red-600 rounded-t-xl">繁體中文</button>
+                  <button onClick={() => setLang('zh-CN')} className="block w-full text-left px-4 py-2 text-[15px] text-slate-700 hover:bg-slate-50 hover:text-red-600">简体中文</button>
+                  <button onClick={() => setLang('vi')} className="block w-full text-left px-4 py-2 text-[15px] text-slate-700 hover:bg-slate-50 hover:text-red-600 rounded-b-xl">Tiếng Việt</button>
+                </div>
+              </div>
               <a 
                 href="https://iee.mcu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full font-medium text-sm transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className={`bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 whitespace-nowrap ${
+                  lang === 'vi' ? 'px-2.5 py-1 text-[10px] lg:text-[11px] xl:text-[14px]' : 'px-4 py-2 text-[14px] lg:text-[15px] xl:text-[16px]'
+                }`}
               >
-                立即報名
+                {t.nav.apply}
               </a>
             </div>
 
@@ -159,13 +185,18 @@ export default function App() {
                 {link.name}
               </button>
             ))}
+            <div className="flex gap-2 py-2">
+              <button onClick={() => setLang('zh-TW')} className={`flex-1 py-2 text-sm rounded-lg ${lang === 'zh-TW' ? 'bg-red-50 text-red-600 font-bold' : 'bg-slate-50 text-slate-600'}`}>繁體</button>
+              <button onClick={() => setLang('zh-CN')} className={`flex-1 py-2 text-sm rounded-lg ${lang === 'zh-CN' ? 'bg-red-50 text-red-600 font-bold' : 'bg-slate-50 text-slate-600'}`}>简体</button>
+              <button onClick={() => setLang('vi')} className={`flex-1 py-2 text-sm rounded-lg ${lang === 'vi' ? 'bg-red-50 text-red-600 font-bold' : 'bg-slate-50 text-slate-600'}`}>Tiếng Việt</button>
+            </div>
             <a 
               href="https://iee.mcu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-red-600 text-white px-5 py-3 rounded-xl font-medium text-center shadow-md"
             >
-              立即報名
+              {t.nav.apply}
             </a>
           </motion.div>
         )}
@@ -192,21 +223,21 @@ export default function App() {
               transition={{ duration: 0.8 }}
             >
               <span className="inline-block py-1 px-3 rounded-full bg-red-100 text-red-700 border border-red-200 font-semibold text-sm mb-6 backdrop-blur-sm shadow-sm">
-                熱烈招生中
+                {t.hero.badge}
               </span>
               <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                啟動你的<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">國際觀光</span>夢想！
+                {t.hero.title1}<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">{t.hero.titleHighlight}</span>{t.hero.title2}
               </h1>
               <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed font-medium">
-                專為越南高中生打造的「1+4」升學計畫。第一年強化華語能力，後四年深入學習觀光專業，接軌國際就業市場，讓世界成為你的舞台！
+                {t.hero.desc}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <button onClick={() => scrollToSection('admission')} className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-red-600/30 flex items-center justify-center gap-2">
-                  了解申請資訊 <ChevronRight size={20} />
+                  {t.hero.btnApply} <ChevronRight size={20} />
                 </button>
                 <button onClick={() => scrollToSection('videos')} className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2">
-                  <PlayCircle size={20} className="text-red-600" /> 觀看宣傳影片
+                  <PlayCircle size={20} className="text-red-600" /> {t.hero.btnVideo}
                 </button>
               </div>
             </motion.div>
@@ -230,8 +261,8 @@ export default function App() {
                 <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 rotate-3">
                   <Globe size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">免華語基礎</h3>
-                <p className="text-slate-600">入學免提供華語檢定證明，第一年密集培訓，從零開始打好語言基礎。</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{t.about.title1}</h3>
+                <p className="text-slate-600">{t.about.desc1}</p>
               </div>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -239,8 +270,8 @@ export default function App() {
                 <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6 -rotate-3">
                   <Award size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">1+4 完整學制</h3>
-                <p className="text-slate-600">1年華語先修 + 4年觀光專業課程，畢業取得銘傳大學正式學士學位。</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{t.about.title2}</h3>
+                <p className="text-slate-600">{t.about.desc2}</p>
               </div>
             </FadeIn>
             <FadeIn delay={0.3}>
@@ -248,8 +279,8 @@ export default function App() {
                 <div className="w-16 h-16 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center mb-6 rotate-3">
                   <Briefcase size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">實務就業導向</h3>
-                <p className="text-slate-600">豐富的產學合作與海內外實習機會，畢業即具備國際觀光產業即戰力。</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{t.about.title3}</h3>
+                <p className="text-slate-600">{t.about.desc3}</p>
               </div>
             </FadeIn>
           </div>
@@ -260,9 +291,9 @@ export default function App() {
       <section id="pathway" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-sm font-bold text-red-600 tracking-wider uppercase mb-2">Study Pathway</h2>
-            <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">修讀流程 (1+4 計畫)</h3>
-            <p className="text-lg text-slate-600">為越南學生量身打造的五年學習藍圖，從語言學習到專業養成，步步邁向成功。</p>
+            <h2 className="text-sm font-bold text-red-600 tracking-wider uppercase mb-2">{t.pathway.subtitle}</h2>
+            <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">{t.pathway.title}</h3>
+            <p className="text-lg text-slate-600">{t.pathway.desc}</p>
           </div>
 
           <div className="relative">
@@ -274,12 +305,12 @@ export default function App() {
               <FadeIn direction="left">
                 <div className="md:flex items-center justify-between w-full mb-12">
                   <div className="md:w-5/12 mb-6 md:mb-0 md:text-right pr-0 md:pr-8">
-                    <h4 className="text-2xl font-bold text-slate-900 mb-2">第 1 年：華語先修</h4>
-                    <p className="text-slate-600 mb-4">在國際專修部進行密集的華語訓練，適應台灣生活環境。</p>
+                    <h4 className="text-2xl font-bold text-slate-900 mb-2">{t.pathway.year1}</h4>
+                    <p className="text-slate-600 mb-4">{t.pathway.year1Desc}</p>
                     <ul className="space-y-2 inline-block text-left">
-                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-red-500" /> 零基礎入學，專業華語師資</li>
-                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-red-500" /> 目標考取 TOCFL A2/B1 證照</li>
-                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-red-500" /> 專屬越南語輔導員協助生活適應</li>
+                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-red-500" /> {t.pathway.y1_1}</li>
+                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-red-500" /> {t.pathway.y1_2}</li>
+                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-red-500" /> {t.pathway.y1_3}</li>
                     </ul>
                   </div>
                   <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-red-600 border-4 border-white shadow-lg items-center justify-center text-white font-bold z-10">
@@ -295,24 +326,24 @@ export default function App() {
               <FadeIn direction="right">
                 <div className="md:flex items-center justify-between w-full flex-row-reverse mb-12">
                   <div className="md:w-5/12 mb-6 md:mb-0 pl-0 md:pl-8">
-                    <h4 className="text-2xl font-bold text-slate-900 mb-2">第 2-5 年：觀光專業課程</h4>
-                    <p className="text-slate-600 mb-4">正式進入「智慧旅遊與觀光傳播國際專班」，循序漸進培養專業能力：</p>
+                    <h4 className="text-2xl font-bold text-slate-900 mb-2">{t.pathway.year2_5}</h4>
+                    <p className="text-slate-600 mb-4">{t.pathway.year2_5Desc}</p>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2 text-slate-700">
                         <CheckCircle size={18} className="text-blue-500 mt-0.5 flex-shrink-0" /> 
-                        <span><strong>大一 (第2年) 基礎與智慧觀光：</strong>觀光學概論、智慧觀光、人工智慧概論、程式設計與國際禮儀。</span>
+                        <span>{t.pathway.y2_1}</span>
                       </li>
                       <li className="flex items-start gap-2 text-slate-700">
                         <CheckCircle size={18} className="text-blue-500 mt-0.5 flex-shrink-0" /> 
-                        <span><strong>大二 (第3年) 核心與航空票務：</strong>旅行業經營學、航空客運與票務、空地勤服務管理、觀光行銷與外語。</span>
+                        <span>{t.pathway.y2_2}</span>
                       </li>
                       <li className="flex items-start gap-2 text-slate-700">
                         <CheckCircle size={18} className="text-blue-500 mt-0.5 flex-shrink-0" /> 
-                        <span><strong>大三 (第4年) 進階與行程規劃：</strong>旅遊產品策略與行程設計、旅行業訂位系統、節慶活動與會展管理。</span>
+                        <span>{t.pathway.y2_3}</span>
                       </li>
                       <li className="flex items-start gap-2 text-slate-700">
                         <CheckCircle size={18} className="text-blue-500 mt-0.5 flex-shrink-0" /> 
-                        <span><strong>大四 (第5年) 實習與職場接軌：</strong>觀光企業實習、海外進階實習、ESG觀光企業永續經營與職場實務專題。</span>
+                        <span>{t.pathway.y2_4}</span>
                       </li>
                     </ul>
                   </div>
@@ -329,12 +360,12 @@ export default function App() {
               <FadeIn direction="left">
                 <div className="md:flex items-center justify-between w-full">
                   <div className="md:w-5/12 mb-6 md:mb-0 md:text-right pr-0 md:pr-8">
-                    <h4 className="text-2xl font-bold text-slate-900 mb-2">畢業與未來發展</h4>
-                    <p className="text-slate-600 mb-4">具備多語能力與觀光專業，成為跨國人才。</p>
+                    <h4 className="text-2xl font-bold text-slate-900 mb-2">{t.pathway.future}</h4>
+                    <p className="text-slate-600 mb-4">{t.pathway.futureDesc}</p>
                     <ul className="space-y-2 inline-block text-left">
-                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-yellow-500" /> 留台就業 (適用評點制)</li>
-                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-yellow-500" /> 返國擔任跨國企業幹部</li>
-                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-yellow-500" /> 繼續攻讀碩士學位</li>
+                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-yellow-500" /> {t.pathway.f1}</li>
+                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-yellow-500" /> {t.pathway.f2}</li>
+                      <li className="flex items-center gap-2 text-slate-700"><CheckCircle size={16} className="text-yellow-500" /> {t.pathway.f3}</li>
                     </ul>
                   </div>
                   <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-yellow-500 border-4 border-white shadow-lg items-center justify-center text-white font-bold z-10">
@@ -354,21 +385,21 @@ export default function App() {
       <section id="features" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-sm font-bold text-red-600 tracking-wider uppercase mb-2">Course Features</h2>
-            <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">觀光系課程特色</h3>
-            <p className="text-lg text-slate-600">結合學術理論與產業實務，培養具備國際競爭力的觀光專業人才。</p>
+            <h2 className="text-sm font-bold text-red-600 tracking-wider uppercase mb-2">{t.features.subtitle}</h2>
+            <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">{t.features.title}</h3>
+            <p className="text-lg text-slate-600">{t.features.desc}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, idx) => (
-              <div key={idx}>
-                <FadeIn delay={idx * 0.1} direction="up">
-                  <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-slate-100 h-full">
-                    <div className="w-14 h-14 rounded-xl bg-slate-50 flex items-center justify-center mb-6">
+              <div key={idx} className="h-full">
+                <FadeIn delay={idx * 0.1} direction="up" className="h-full">
+                  <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-slate-100 h-full flex flex-col">
+                    <div className="w-14 h-14 rounded-xl bg-slate-50 flex items-center justify-center mb-6 shrink-0">
                       {feature.icon}
                     </div>
                     <h4 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h4>
-                    <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+                    <p className="text-slate-600 leading-relaxed flex-grow">{feature.desc}</p>
                   </div>
                 </FadeIn>
               </div>
@@ -387,9 +418,9 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-sm font-bold text-red-400 tracking-wider uppercase mb-2">Campus Life</h2>
-            <h3 className="text-3xl md:text-4xl font-extrabold mb-6">預見你的銘傳生活</h3>
-            <p className="text-lg text-slate-300">透過影片，帶你搶先體驗在銘傳大學觀光系的學習與台灣豐富的生活樣貌。</p>
+            <h2 className="text-sm font-bold text-red-400 tracking-wider uppercase mb-2">{t.videos.subtitle}</h2>
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-6">{t.videos.title}</h3>
+            <p className="text-lg text-slate-300">{t.videos.desc}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -400,8 +431,8 @@ export default function App() {
                   <div className="w-20 h-20 rounded-full bg-red-600/90 flex items-center justify-center text-white mb-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-red-600/50">
                     <PlayCircle size={40} className="ml-1" />
                   </div>
-                  <h4 className="text-2xl font-bold text-white drop-shadow-md">學習篇 (即將上線)</h4>
-                  <p className="text-slate-200 mt-2 font-medium">Learning in MCU</p>
+                  <h4 className="text-2xl font-bold text-white drop-shadow-md">{t.videos.v1Title}</h4>
+                  <p className="text-slate-200 mt-2 font-medium">{t.videos.v1Desc}</p>
                 </div>
               </div>
             </FadeIn>
@@ -413,8 +444,8 @@ export default function App() {
                   <div className="w-20 h-20 rounded-full bg-blue-600/90 flex items-center justify-center text-white mb-4 transform group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/50">
                     <PlayCircle size={40} className="ml-1" />
                   </div>
-                  <h4 className="text-2xl font-bold text-white drop-shadow-md">生活篇 (即將上線)</h4>
-                  <p className="text-slate-200 mt-2 font-medium">Life in Taiwan</p>
+                  <h4 className="text-2xl font-bold text-white drop-shadow-md">{t.videos.v2Title}</h4>
+                  <p className="text-slate-200 mt-2 font-medium">{t.videos.v2Desc}</p>
                 </div>
               </div>
             </FadeIn>
@@ -424,107 +455,33 @@ export default function App() {
 
       {/* Admission & Application */}
       <section id="admission" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <FadeIn direction="up">
+            <h2 className="text-sm font-bold text-red-600 tracking-wider uppercase mb-2">{t.admission.subtitle}</h2>
+            <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">{t.admission.title}</h3>
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+              {t.admission.desc}
+            </p>
             
-            {/* Admission Channels */}
-            <FadeIn direction="right">
-              <div>
-                <h2 className="text-sm font-bold text-red-600 tracking-wider uppercase mb-2">Admission</h2>
-                <h3 className="text-3xl font-extrabold text-slate-900 mb-8">招生管道與資格</h3>
-                
-                <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0">
-                      <Users size={24} />
-                    </div>
-                    <div>
-                      <h5 className="text-lg font-bold text-slate-900 mb-1">招生對象</h5>
-                      <p className="text-slate-600">具備越南國籍，對觀光相關產業有高度熱忱，並有意願來台升學之高中畢業生(或應屆畢業生)。</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
-                      <GraduationCap size={24} />
-                    </div>
-                    <div>
-                      <h5 className="text-lg font-bold text-slate-900 mb-1">學歷要求</h5>
-                      <p className="text-slate-600">具備越南當地政府認可之高級中學畢業學歷。</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0">
-                      <Globe size={24} />
-                    </div>
-                    <div>
-                      <h5 className="text-lg font-bold text-slate-900 mb-1">語言門檻</h5>
-                      <p className="text-slate-600"><strong className="text-red-600">免華語基礎！</strong>申請時無需提供TOCFL成績證明，入學後由國際專修部提供一年密集華語培訓。</p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center flex-shrink-0">
-                      <Calendar size={24} />
-                    </div>
-                    <div>
-                      <h5 className="text-lg font-bold text-slate-900 mb-1">入學時間</h5>
-                      <p className="text-slate-600">詳細報名時程請見本校國教處公告。</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Application Process */}
-            <FadeIn direction="left">
-              <div className="bg-slate-900 rounded-3xl p-8 md:p-10 text-white shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-red-600 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
-                
-                <h3 className="text-2xl font-bold mb-8 relative z-10">申請流程 6 步驟</h3>
-                
-                <div className="space-y-6 relative z-10">
-                  {[
-                    { step: "01", title: "準備文件", desc: "高中畢業證書、成績單、護照影本、財力證明等。" },
-                    { step: "02", title: "線上報名", desc: "透過銘傳大學國際學生線上申請系統填寫資料。" },
-                    { step: "03", title: "資格審查", desc: "由學系進行書面資料審查，必要時安排線上口試。" },
-                    { step: "04", title: "錄取通知", desc: "審查通過後，發放正式錄取信與入學許可。" },
-                    { step: "05", title: "簽證辦理", desc: "持入學許可至駐越台北經濟文化辦事處辦理學生簽證。" },
-                    { step: "06", title: "抵台報到", desc: "學校安排專人接機，協助入住宿舍，展開留學生活！" }
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex gap-4">
-                      <div className="text-red-400 font-mono font-bold text-xl pt-1">{item.step}</div>
-                      <div>
-                        <h5 className="text-lg font-bold text-white mb-1">{item.title}</h5>
-                        <p className="text-slate-400 text-sm">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-10 relative z-10">
-                  <a 
-                    href="https://iee.mcu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex justify-center items-center bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-red-600/30"
-                  >
-                    前往線上申請系統
-                  </a>
-                </div>
-              </div>
-            </FadeIn>
-
-          </div>
+            <a 
+              href="https://iee.mcu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              {t.admission.btnApply}
+              <ArrowRight size={20} />
+            </a>
+          </FadeIn>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="bg-slate-100 text-slate-600 py-16 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 items-center">
             <div className="lg:col-span-2">
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-4">
                 <img 
                   src="https://tourismdp.mcu.edu.tw/wp-content/uploads/sites/17/2023/02/LOGO-Banner-removebg-preview-1.png" 
                   alt="銘傳大學觀光事業學系 Logo" 
@@ -532,38 +489,23 @@ export default function App() {
                   referrerPolicy="no-referrer"
                 />
                 <div className="flex flex-col justify-center mt-2">
-                  <span className="font-bold text-lg text-slate-900">國際專修部(越南專班)</span>
+                  <span className="font-bold text-lg text-slate-900">{t.nav.program}</span>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed max-w-md mb-6">
-                培育具備國際視野、專業技能與創新思維的觀光產業領導人才。歡迎加入我們，開啟你的全球觀光職涯！
-              </p>
             </div>
 
             <div>
-              <h3 className="text-slate-900 font-bold mb-6">聯絡資訊</h3>
-              <ul className="space-y-4 text-sm">
-                <li className="flex items-start gap-3">
-                  <MapPin size={18} className="text-red-600 mt-0.5 flex-shrink-0" />
-                  <span>桃園校區：桃園市龜山區德明路五號</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Phone size={18} className="text-red-600 flex-shrink-0" />
-                  <span>分機 3203</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail size={18} className="text-red-600 flex-shrink-0" />
-                  <span>jychao@mail.mcu.edu.tw</span>
-                </li>
-              </ul>
+              <p className="text-sm leading-relaxed max-w-md">
+                {t.footer.desc}
+              </p>
             </div>
           </div>
 
           <div className="pt-8 border-t border-slate-300 text-sm text-center md:text-left flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; {new Date().getFullYear()} 銘傳大學觀光事業學系 版權所有</p>
+            <p>&copy; {new Date().getFullYear()} {t.footer.rights}</p>
             <div className="mt-4 md:mt-0 space-x-4">
-              <a href="#" className="hover:text-slate-900 transition-colors">隱私權政策</a>
-              <a href="#" className="hover:text-slate-900 transition-colors">使用條款</a>
+              <a href="#" className="hover:text-slate-900 transition-colors">{t.footer.privacy}</a>
+              <a href="#" className="hover:text-slate-900 transition-colors">{t.footer.terms}</a>
             </div>
           </div>
         </div>
