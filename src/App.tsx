@@ -109,15 +109,15 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans text-slate-800 bg-slate-50 selection:bg-red-200 selection:text-red-900">
       {/* Floating Social Bar */}
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 md:gap-3 p-1.5 md:p-3 bg-white/90 backdrop-blur-md shadow-[-4px_0_15px_rgba(0,0,0,0.1)] rounded-l-xl md:rounded-l-2xl border border-r-0 border-slate-200">
-        <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 text-[#1877F2] hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors" title="Facebook">
-          <Facebook className="w-5 h-5 md:w-[26px] md:h-[26px]" strokeWidth={2.5} />
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 md:gap-3 p-2 pl-3 md:p-3 bg-white/90 backdrop-blur-md shadow-[-4px_0_15px_rgba(0,0,0,0.1)] rounded-l-xl md:rounded-l-2xl border border-r-0 border-slate-200">
+        <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="p-2 text-[#1877F2] hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors" title="Facebook">
+          <Facebook className="w-6 h-6 md:w-[26px] md:h-[26px]" strokeWidth={2.5} />
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 text-[#E4405F] hover:bg-pink-50 rounded-lg md:rounded-xl transition-colors" title="Instagram">
-          <Instagram className="w-5 h-5 md:w-[26px] md:h-[26px]" strokeWidth={2.5} />
+        <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="p-2 text-[#E4405F] hover:bg-pink-50 rounded-lg md:rounded-xl transition-colors" title="Instagram">
+          <Instagram className="w-6 h-6 md:w-[26px] md:h-[26px]" strokeWidth={2.5} />
         </a>
-        <a href="https://tiktok.com/@tourismdpmcu" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 text-slate-900 hover:bg-slate-100 rounded-lg md:rounded-xl transition-colors" title="TikTok">
-          <TikTokIcon className="w-5 h-5 md:w-[26px] md:h-[26px]" />
+        <a href="https://tiktok.com/@tourismdpmcu" target="_blank" rel="noopener noreferrer" className="p-2 text-slate-900 hover:bg-slate-100 rounded-lg md:rounded-xl transition-colors" title="TikTok">
+          <TikTokIcon className="w-6 h-6 md:w-[26px] md:h-[26px]" />
         </a>
       </div>
 
@@ -125,14 +125,14 @@ export default function App() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <div className={`flex items-center cursor-pointer ${lang === 'vi' ? 'gap-1.5 lg:gap-2' : 'gap-2 sm:gap-3'}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className={`flex items-center cursor-pointer ${lang === 'vi' ? 'gap-1.5 lg:gap-2' : 'gap-2 sm:gap-3'} flex-1 min-w-0 pr-2`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <img 
                 src="https://tourismdp.mcu.edu.tw/wp-content/uploads/sites/17/2023/02/LOGO-Banner-removebg-preview-1.png" 
                 alt="銘傳大學觀光事業學系 Logo" 
                 className="h-[61px] md:h-[69px] w-auto object-contain drop-shadow-md shrink-0"
                 referrerPolicy="no-referrer"
               />
-              <div className="flex flex-col justify-center mt-1 max-w-[160px] sm:max-w-none">
+              <div className="flex flex-col justify-center mt-1 flex-1 min-w-0">
                 <span className={`font-bold text-slate-800 leading-tight sm:whitespace-nowrap ${
                   lang === 'vi' ? 'text-[9px] sm:text-[10px] lg:text-[11px] xl:text-[15px] tracking-normal' : 'text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[18px] tracking-wide'
                 }`}>
@@ -181,10 +181,10 @@ export default function App() {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="md:hidden shrink-0 ml-1">
               <button 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-slate-900"
+                className="text-slate-900 p-2 -mr-2"
               >
                 {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
