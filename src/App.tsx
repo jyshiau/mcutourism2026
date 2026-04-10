@@ -255,12 +255,12 @@ export default function App() {
                 {t.hero.desc}
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                <button onClick={() => scrollToSection('admission')} className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-base md:text-lg transition-all shadow-lg hover:shadow-red-600/30 flex items-center justify-center gap-2">
-                  {t.hero.btnApply} <ChevronRight size={20} />
+              <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 w-full max-w-md sm:max-w-none">
+                <button onClick={() => scrollToSection('admission')} className="flex-1 sm:flex-none bg-red-600 hover:bg-red-700 text-white px-2 sm:px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-[13px] sm:text-base md:text-lg transition-all shadow-lg hover:shadow-red-600/30 flex items-center justify-center gap-1 sm:gap-2 leading-tight">
+                  <span className="text-center">{t.hero.btnApply}</span> <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 </button>
-                <button onClick={() => scrollToSection('videos')} className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-base md:text-lg transition-all flex items-center justify-center gap-2">
-                  <PlayCircle size={20} className="text-red-600" /> {t.hero.btnVideo}
+                <button onClick={() => scrollToSection('videos')} className="flex-1 sm:flex-none bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md px-2 sm:px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-[13px] sm:text-base md:text-lg transition-all flex items-center justify-center gap-1 sm:gap-2 leading-tight">
+                  <PlayCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 shrink-0" /> <span className="text-center">{t.hero.btnVideo}</span>
                 </button>
               </div>
             </motion.div>
