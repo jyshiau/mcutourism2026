@@ -21,12 +21,12 @@ export const translations = {
       btnVideo: '觀看宣傳影片'
     },
     about: {
-      title1: '免華語基礎',
-      desc1: '入學免提供華語檢定證明，第一年密集培訓，從零開始打好語言基礎。',
-      title2: '1+4 完整學制',
-      desc2: '1年華語先修 + 4年觀光專業課程，畢業取得銘傳大學正式學士學位。',
-      title3: '實務就業導向',
-      desc3: '豐富的產學合作與海內外實習機會，畢業即具備國際觀光產業即戰力。'
+      title1: '專屬越南高中生',
+      desc1: '具備越南國籍及高中畢業學歷即可申請，為越南學生量身打造的升學管道。',
+      title2: '免華語基礎',
+      desc2: '申請時無需TOCFL成績！入學後由國際專修部提供一年密集華語培訓。',
+      title3: '1+4 取得學士學位',
+      desc3: '1年華語先修 + 4年觀光專業課程，畢業取得銘傳大學正式學士學位。'
     },
     pathway: {
       subtitle: 'Study Pathway',
@@ -66,7 +66,7 @@ export const translations = {
       subtitle: 'Campus Life',
       title: '預見你的銘傳生活',
       desc: '透過影片，帶你搶先體驗在銘傳大學觀光系的學習與台灣豐富的生活樣貌。',
-      v1Title: '學習篇 (即將上線)',
+      v1Title: '學習篇',
       v1Desc: 'Learning in MCU',
       v2Title: '生活篇 (即將上線)',
       v2Desc: 'Life in Taiwan'
@@ -74,14 +74,18 @@ export const translations = {
     admission: {
       subtitle: 'Admission',
       title: '招生與申請資訊',
-      desc: '為提供最準確、即時的招生與申請資訊，所有報名資格、時程與相關規定，皆以銘傳大學國際專修部之官方公告為準。',
+      targetTitle: '招生對象',
+      targetDesc: '具備越南國籍，對觀光相關產業有高度熱忱，並有意願來台升學之高中畢業生(或應屆畢業生)。',
+      academicTitle: '學歷要求',
+      academicDesc: '具備越南當地政府認可之高級中學畢業學歷。',
+      languageTitle: '語言門檻',
+      languageDesc: '免華語基礎！申請時無需提供TOCFL成績證明，入學後由國際專修部提供一年密集華語培訓。',
       btnApply: '查看最新招生資訊'
     },
     footer: {
-      desc: '培育具備國際視野、專業技能與創新思維的觀光產業領導人才。歡迎加入我們，開啟你的全球觀光職涯！',
-      contact: '聯絡資訊',
-      address: '桃園校區：桃園市龜山區德明路五號',
-      ext: '分機',
+      addressLine: '地址：桃園市龜山區德明路五號',
+      phoneLine: '電話：03-3507001#3203',
+      emailLine: 'E-mail：jychao@mail.mcu.edu.tw',
       rights: '銘傳大學觀光事業學系 版權所有',
       privacy: '隱私權政策',
       terms: '使用條款'
@@ -107,12 +111,12 @@ export const translations = {
       btnVideo: '观看宣传影片'
     },
     about: {
-      title1: '免华语基础',
-      desc1: '入学免提供华语检定证明，第一年密集培训，从零开始打好语言基础。',
-      title2: '1+4 完整学制',
-      desc2: '1年华语先修 + 4年观光专业课程，毕业取得铭传大学正式学士学位。',
-      title3: '实务就业导向',
-      desc3: '丰富的产学合作与海内外实习机会，毕业即具备国际观光产业即战力。'
+      title1: '专属越南高中生',
+      desc1: '具备越南国籍及高中毕业学历即可申请，为越南学生量身打造的升学管道。',
+      title2: '免华语基础',
+      desc2: '申请时无需TOCFL成绩！入学后由国际专修部提供一年密集华语培训。',
+      title3: '1+4 取得学士学位',
+      desc3: '1年华语先修 + 4年观光专业课程，毕业取得铭传大学正式学士学位。'
     },
     pathway: {
       subtitle: 'Study Pathway',
@@ -152,7 +156,7 @@ export const translations = {
       subtitle: 'Campus Life',
       title: '预见你的铭传生活',
       desc: '透过影片，带你抢先体验在铭传大学观光系的学习与台湾丰富的生活样貌。',
-      v1Title: '学习篇 (即将上线)',
+      v1Title: '学习篇',
       v1Desc: 'Learning in MCU',
       v2Title: '生活篇 (即将上线)',
       v2Desc: 'Life in Taiwan'
@@ -160,14 +164,18 @@ export const translations = {
     admission: {
       subtitle: 'Admission',
       title: '招生与申请资讯',
-      desc: '为提供最准确、即时的招生与申请资讯，所有报名资格、时程与相关规定，皆以铭传大学国际专修部之官方公告为准。',
+      targetTitle: '招生对象',
+      targetDesc: '具备越南国籍，对观光相关产业有高度热忱，并有意愿来台升学之高中毕业生(或应届毕业生)。',
+      academicTitle: '学历要求',
+      academicDesc: '具备越南当地政府认可之高级中学毕业学历。',
+      languageTitle: '语言门槛',
+      languageDesc: '免华语基础！申请时无需提供TOCFL成绩证明，入学后由国际专修部提供一年密集华语培训。',
       btnApply: '查看最新招生资讯'
     },
     footer: {
-      desc: '培育具备国际视野、专业技能与创新思维的观光产业领导人才。欢迎加入我们，开启你的全球观光职涯！',
-      contact: '联络资讯',
-      address: '桃园校区：桃园市龟山区德明路五号',
-      ext: '分机',
+      addressLine: '地址：桃园市龟山区德明路五号',
+      phoneLine: '电话：03-3507001#3203',
+      emailLine: 'E-mail：jychao@mail.mcu.edu.tw',
       rights: '铭传大学观光事业学系 版权所有',
       privacy: '隐私权政策',
       terms: '使用条款'
@@ -193,12 +201,12 @@ export const translations = {
       btnVideo: 'Xem video'
     },
     about: {
-      title1: 'Không yêu cầu tiếng Trung',
-      desc1: 'Miễn chứng chỉ tiếng Trung khi nhập học, đào tạo chuyên sâu năm đầu từ con số 0.',
-      title2: 'Hệ thống học 1+4',
-      desc2: '1 năm tiếng Trung + 4 năm chuyên ngành du lịch, nhận bằng Cử nhân chính quy Đại học Minh Truyền.',
-      title3: 'Định hướng việc làm',
-      desc3: 'Cơ hội thực tập phong phú trong và ngoài nước, sẵn sàng làm việc ngay sau khi tốt nghiệp.'
+      title1: 'Dành riêng cho học sinh THPT VN',
+      desc1: 'Chỉ cần có quốc tịch Việt Nam và bằng tốt nghiệp THPT là có thể đăng ký.',
+      title2: 'Không yêu cầu tiếng Trung',
+      desc2: 'Không cần chứng chỉ TOCFL khi đăng ký! Được đào tạo tiếng Trung 1 năm sau khi nhập học.',
+      title3: '1+4 Nhận bằng Cử nhân',
+      desc3: '1 năm học tiếng + 4 năm chuyên ngành du lịch, nhận bằng Cử nhân chính quy Đại học Minh Truyền.'
     },
     pathway: {
       subtitle: 'Study Pathway',
@@ -238,7 +246,7 @@ export const translations = {
       subtitle: 'Campus Life',
       title: 'Cuộc sống tại Minh Truyền',
       desc: 'Tìm hiểu môi trường học tập tuyệt vời của khoa Du lịch qua video.',
-      v1Title: 'Học tập (Sắp ra mắt)',
+      v1Title: 'Học tập',
       v1Desc: 'Learning in MCU',
       v2Title: 'Cuộc sống (Sắp ra mắt)',
       v2Desc: 'Life in Taiwan'
@@ -246,14 +254,18 @@ export const translations = {
     admission: {
       subtitle: 'Admission',
       title: 'Thông tin Tuyển sinh & Đăng ký',
-      desc: 'Để cung cấp thông tin tuyển sinh và đăng ký chính xác, cập nhật nhất, tất cả các điều kiện, lịch trình và quy định liên quan đều tuân theo thông báo chính thức của Bộ phận Giáo dục Quốc tế Đại học Minh Truyền.',
+      targetTitle: 'Đối tượng tuyển sinh',
+      targetDesc: 'Học sinh tốt nghiệp THPT (hoặc sắp tốt nghiệp) mang quốc tịch Việt Nam, có đam mê với ngành du lịch và có nguyện vọng đến Đài Loan học tập.',
+      academicTitle: 'Yêu cầu học vấn',
+      academicDesc: 'Có bằng tốt nghiệp THPT do chính phủ Việt Nam công nhận.',
+      languageTitle: 'Yêu cầu ngoại ngữ',
+      languageDesc: 'Không yêu cầu tiếng Trung cơ bản! Không cần chứng chỉ TOCFL khi đăng ký, sau khi nhập học sẽ được Bộ phận Chuyên tu Quốc tế đào tạo tiếng Trung chuyên sâu trong 1 năm.',
       btnApply: 'Xem thông tin tuyển sinh mới nhất'
     },
     footer: {
-      desc: 'Đào tạo nhân tài lãnh đạo ngành du lịch với tầm nhìn quốc tế, kỹ năng chuyên môn và tư duy đổi mới. Chào mừng bạn gia nhập cùng chúng tôi!',
-      contact: 'Thông tin liên hệ',
-      address: 'Cơ sở Đào Viên: Số 5, đường Đức Minh, quận Quy Sơn, Đào Viên',
-      ext: 'Máy lẻ',
+      addressLine: 'Địa chỉ: Số 5, đường Đức Minh, quận Quy Sơn, Đào Viên',
+      phoneLine: 'Điện thoại: 03-3507001#3203',
+      emailLine: 'E-mail: jychao@mail.mcu.edu.tw',
       rights: 'Bản quyền thuộc về Khoa Du lịch Đại học Minh Truyền',
       privacy: 'Chính sách bảo mật',
       terms: 'Điều khoản sử dụng'
