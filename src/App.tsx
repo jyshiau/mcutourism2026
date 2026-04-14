@@ -113,7 +113,7 @@ export default function App() {
         <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="p-2 text-[#1877F2] hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors" title="Facebook">
           <Facebook className="w-6 h-6 md:w-[26px] md:h-[26px]" strokeWidth={2.5} />
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="p-2 text-[#E4405F] hover:bg-pink-50 rounded-lg md:rounded-xl transition-colors" title="Instagram">
+        <a href="https://www.instagram.com/mcutourism_vn?igsh=MXJ0NmtvdG1uNTlvMA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="p-2 text-[#E4405F] hover:bg-pink-50 rounded-lg md:rounded-xl transition-colors" title="Instagram">
           <Instagram className="w-6 h-6 md:w-[26px] md:h-[26px]" strokeWidth={2.5} />
         </a>
         <a href="https://tiktok.com/@tourismdpmcu" target="_blank" rel="noopener noreferrer" className="p-2 text-slate-900 hover:bg-slate-100 rounded-lg md:rounded-xl transition-colors" title="TikTok">
@@ -558,7 +558,7 @@ export default function App() {
                 <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#1877F2] transition-colors" title="Facebook">
                   <Facebook size={20} />
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#E4405F] transition-colors" title="Instagram">
+                <a href="https://www.instagram.com/mcutourism_vn?igsh=MXJ0NmtvdG1uNTlvMA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#E4405F] transition-colors" title="Instagram">
                   <Instagram size={20} />
                 </a>
                 <a href="https://tiktok.com/@tourismdpmcu" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 transition-colors" title="TikTok">
