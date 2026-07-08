@@ -107,7 +107,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen font-sans text-slate-800 bg-slate-50 selection:bg-red-200 selection:text-red-900">
+    <div className="min-h-screen font-sans text-slate-800 bg-slate-50 selection:bg-red-200 selection:text-red-900 overflow-x-hidden w-full">
       {/* Floating Social Bar */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 md:gap-3 p-2 pl-3 md:p-3 bg-white/90 backdrop-blur-md shadow-[-4px_0_15px_rgba(0,0,0,0.1)] rounded-l-xl md:rounded-l-2xl border border-r-0 border-slate-200">
         <a href="https://www.facebook.com/profile.php?id=61576427262006" target="_blank" rel="noopener noreferrer" className="p-2 text-[#1877F2] hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors" title="Facebook">
@@ -226,7 +226,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100dvh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
