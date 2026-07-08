@@ -68,7 +68,7 @@ export const translations = {
       desc: '透過影片，帶你搶先體驗在銘傳大學觀光系的學習與台灣豐富的生活樣貌。',
       v1Title: '學習篇',
       v1Desc: 'Learning in MCU',
-      v2Title: '生活篇 (即將上線)',
+      v2Title: '生活篇',
       v2Desc: 'Life in Taiwan'
     },
     admission: {
@@ -158,7 +158,7 @@ export const translations = {
       desc: '透过影片，带你抢先体验在铭传大学观光系的学习与台湾丰富的生活样貌。',
       v1Title: '学习篇',
       v1Desc: 'Learning in MCU',
-      v2Title: '生活篇 (即将上线)',
+      v2Title: '生活篇',
       v2Desc: 'Life in Taiwan'
     },
     admission: {
@@ -248,7 +248,7 @@ export const translations = {
       desc: 'Tìm hiểu môi trường học tập tuyệt vời của khoa Du lịch qua video.',
       v1Title: 'Học tập',
       v1Desc: 'Learning in MCU',
-      v2Title: 'Cuộc sống (Sắp ra mắt)',
+      v2Title: 'Cuộc sống',
       v2Desc: 'Life in Taiwan'
     },
     admission: {

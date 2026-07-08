@@ -495,7 +495,7 @@ export default function App() {
                 <div className="rounded-2xl overflow-hidden aspect-video bg-slate-800 border border-slate-700 shadow-2xl mb-4 md:mb-5">
                   <iframe 
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/QUDaD-ZFhTE" 
+                    src="https://www.youtube.com/embed/YuqBfZRqdRQ" 
                     title="YouTube video player" 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -512,13 +512,16 @@ export default function App() {
 
             <FadeIn delay={0.2}>
               <div className="flex flex-col h-full">
-                <div className="group relative rounded-2xl overflow-hidden aspect-video bg-slate-800 border border-slate-700 shadow-2xl cursor-pointer mb-4 md:mb-5">
-                  <img src="https://images.unsplash.com/photo-1470076892663-af684e5e15af?q=80&w=1917&auto=format&fit=crop" alt="Lifestyle Video Thumbnail" className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500" referrerPolicy="no-referrer" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-blue-600/90 flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/50">
-                      <PlayCircle size={32} className="ml-1 md:w-10 md:h-10" />
-                    </div>
-                  </div>
+                <div className="rounded-2xl overflow-hidden aspect-video bg-slate-800 border border-slate-700 shadow-2xl mb-4 md:mb-5">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/7qBLcrOU3oY" 
+                    title="YouTube video player" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
                 </div>
                 <div className="px-2 text-center">
                   <h4 className="text-xl md:text-2xl font-bold text-white">{t.videos.v2Title}</h4>
